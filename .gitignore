@@ -14,8 +14,8 @@ Thumbs.db
 .meili_data/
 meili_data/
 
-Shop.API/bin/
-Shop.API/obj/
+bin/
+obj/
 
 Shop.API/appsettings.Development.json
 Shop.API/appsettings.local.json

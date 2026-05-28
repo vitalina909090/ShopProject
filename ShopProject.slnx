@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="Shop.API/Shop.API.csproj" />
+  <Project Path="Shop.DB/Shop.DB.csproj" Id="5e4ecab3-c79b-4f8a-b029-6bf082bbef9f" />
 </Solution>

@@ -1,4 +1,7 @@
-﻿namespace Shop.API.ProgramExtensions;
+﻿using Microsoft.EntityFrameworkCore;
+using Shop.DB.Context;
+
+namespace Shop.API.ProgramExtensions;
 
 public static class DbExtension
 {
@@ -6,6 +9,10 @@ public static class DbExtension
     {
 
         var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+
+        services.AddDbContext<MyShopDbContext>(options =>
+            options.UseNpgsql(connectionString, b =>
+                b.MigrationsAssembly("Shop.DB")));
 
         return services;
     }
