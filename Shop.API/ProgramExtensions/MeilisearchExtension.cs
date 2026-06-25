@@ -12,4 +12,10 @@ public static class MeilisearchExtension
 
         return services;
     }
+    public static async Task ConfigureIndexAsync(this MeilisearchClient client)
+    {
+        var index = client.Index("products");
+
+        await Task.CompletedTask;
+    }
 }

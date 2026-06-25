@@ -13,12 +13,10 @@ namespace Shop.DB.Entities.Discounts
         public DateTimeOffset? StartAt { get; set; }
         public DateTimeOffset? EndAt { get; set; }
         public bool IsActive { get; set; }
-        public int? ProductId { get; set; }
         public int? ProductVariantId { get; set; }
         public int? CategoryId { get; set; }
 
         public DiscountType DiscountType { get; set; } = null!;
-        public Product? Product { get; set; }
         public ProductVariant? ProductVariant { get; set; }
         public Category? Category { get; set; }
         public ICollection<DiscountProduct> DiscountProducts { get; set; } = new List<DiscountProduct>();

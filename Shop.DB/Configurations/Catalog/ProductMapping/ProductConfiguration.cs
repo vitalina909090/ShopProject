@@ -30,6 +30,16 @@ namespace Shop.DB.Configurations.Catalog.ProductMapping
                 .HasColumnName("IsArchived")
                 .IsRequired();
 
+            builder.Property(p => p.IsNew)
+                .HasColumnName("IsNew")
+                .IsRequired()
+                .HasDefaultValue(false);
+
+            builder.Property(p => p.IsPopular)
+                .HasColumnName("IsPopular")
+                .IsRequired()
+                .HasDefaultValue(false);
+
             builder.Property(p => p.CatalogVariantId)
                 .HasColumnName("CatalogVariantId");
 
@@ -51,6 +61,12 @@ namespace Shop.DB.Configurations.Catalog.ProductMapping
 
             builder.HasIndex(p => p.CategoryId)
                 .HasDatabaseName("IX_Products_CategoryId");
+
+            builder.HasIndex(p => p.IsNew)
+                .HasDatabaseName("IX_Products_IsNew");
+
+            builder.HasIndex(p => p.IsPopular)
+                .HasDatabaseName("IX_Products_IsPopular");
 
             builder.HasIndex(p => p.CatalogVariantId)
                 .HasDatabaseName("IX_Products_CatalogVariantId");

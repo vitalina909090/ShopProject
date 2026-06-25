@@ -20,16 +20,16 @@ obj/
 Shop.API/appsettings.Development.json
 Shop.API/appsettings.local.json
 
-Shop.Client/node_modules/
-Shop.Client/dist/
-Shop.Client/dist-ssr/
+node_modules
+dist
+dist-ssr
 
-Shop.Client/.vite/
-Shop.Client/.eslintcache/
+.vite
+.eslintcache
 
-Shop.Client/logs/
-Shop.Client/*.log
-Shop.Client/npm-debug.log*
-Shop.Client/yarn-debug.log*
-Shop.Client/yarn-error.log*
-Shop.Client/pnpm-debug.log*
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

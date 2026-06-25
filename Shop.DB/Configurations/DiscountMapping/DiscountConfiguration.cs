@@ -43,9 +43,6 @@ namespace Shop.DB.Configurations.DiscountMapping
                 .HasColumnName("IsActive")
                 .IsRequired();
 
-            builder.Property(d => d.ProductId)
-                .HasColumnName("ProductId");
-
             builder.Property(d => d.ProductVariantId)
                 .HasColumnName("ProductVariantId");
 
@@ -65,9 +62,6 @@ namespace Shop.DB.Configurations.DiscountMapping
             builder.HasIndex(d => d.TypeId)
                 .HasDatabaseName("IX_Discounts_TypeId");
 
-            builder.HasIndex(d => d.ProductId)
-                .HasDatabaseName("IX_Discounts_ProductId");
-
             builder.HasIndex(d => d.ProductVariantId)
                 .HasDatabaseName("IX_Discounts_ProductVariantId");
 
@@ -82,12 +76,6 @@ namespace Shop.DB.Configurations.DiscountMapping
                 .HasForeignKey(d => d.TypeId)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_Discounts_DiscountTypes_TypeId");
-
-            builder.HasOne(d => d.Product)
-                .WithMany(p => p.Discounts)
-                .HasForeignKey(d => d.ProductId)
-                .OnDelete(DeleteBehavior.SetNull)
-                .HasConstraintName("FK_Discounts_Products_ProductId");
 
             builder.HasOne(d => d.ProductVariant)
                 .WithMany(pv => pv.Discounts)

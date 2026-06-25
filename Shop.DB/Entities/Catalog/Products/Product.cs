@@ -13,6 +13,8 @@ namespace Shop.DB.Entities.Catalog.Products
         public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;
         public bool IsArchived { get; set; }
+        public bool IsNew { get; set; }
+        public bool IsPopular { get; set; }
         public int? CatalogVariantId { get; set; }
         public int CategoryId { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
@@ -26,7 +28,6 @@ namespace Shop.DB.Entities.Catalog.Products
         public ICollection<ProductOptionLink> OptionLinks { get; set; } = new List<ProductOptionLink>();
         public ICollection<Review> Reviews { get; set; } = new List<Review>();
         public ICollection<Wishlist> Wishlists { get; set; } = new List<Wishlist>();
-        public ICollection<Discount> Discounts { get; set; } = new List<Discount>();
         public ICollection<DiscountProduct> DiscountProducts { get; set; } = new List<DiscountProduct>();
     }
 }

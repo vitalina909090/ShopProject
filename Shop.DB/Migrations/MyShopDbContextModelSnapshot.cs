@@ -349,6 +349,18 @@ namespace Shop.DB.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("IsArchived");
 
+                    b.Property<bool>("IsNew")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsNew");
+
+                    b.Property<bool>("IsPopular")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsPopular");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -366,6 +378,12 @@ namespace Shop.DB.Migrations
 
                     b.HasIndex("CategoryId")
                         .HasDatabaseName("IX_Products_CategoryId");
+
+                    b.HasIndex("IsNew")
+                        .HasDatabaseName("IX_Products_IsNew");
+
+                    b.HasIndex("IsPopular")
+                        .HasDatabaseName("IX_Products_IsPopular");
 
                     b.HasIndex("Name")
                         .IsUnique()
@@ -496,10 +514,6 @@ namespace Shop.DB.Migrations
                         .HasColumnType("text")
                         .HasColumnName("Name");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("integer")
-                        .HasColumnName("ProductId");
-
                     b.Property<int?>("ProductVariantId")
                         .HasColumnType("integer")
                         .HasColumnName("ProductVariantId");
@@ -524,9 +538,6 @@ namespace Shop.DB.Migrations
                     b.HasIndex("Name")
                         .IsUnique()
                         .HasDatabaseName("IX_Discounts_Name");
-
-                    b.HasIndex("ProductId")
-                        .HasDatabaseName("IX_Discounts_ProductId");
 
                     b.HasIndex("ProductVariantId")
                         .HasDatabaseName("IX_Discounts_ProductVariantId");
@@ -1371,12 +1382,6 @@ namespace Shop.DB.Migrations
                         .OnDelete(DeleteBehavior.SetNull)
                         .HasConstraintName("FK_Discounts_Categories_CategoryId");
 
-                    b.HasOne("Shop.DB.Entities.Catalog.Products.Product", "Product")
-                        .WithMany("Discounts")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.SetNull)
-                        .HasConstraintName("FK_Discounts_Products_ProductId");
-
                     b.HasOne("Shop.DB.Entities.Catalog.Products.ProductVariant", "ProductVariant")
                         .WithMany("Discounts")
                         .HasForeignKey("ProductVariantId")
@@ -1393,8 +1398,6 @@ namespace Shop.DB.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("DiscountType");
-
-                    b.Navigation("Product");
 
                     b.Navigation("ProductVariant");
                 });
@@ -1649,8 +1652,6 @@ namespace Shop.DB.Migrations
                     b.Navigation("AttributeLinks");
 
                     b.Navigation("DiscountProducts");
-
-                    b.Navigation("Discounts");
 
                     b.Navigation("Images");
 

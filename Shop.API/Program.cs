@@ -1,4 +1,6 @@
+using Mapster;
 using Shop.API.ProgramExtensions;
+using System.Reflection;
 
 DotNetEnv.Env.Load();
 
@@ -15,8 +17,17 @@ builder.Services.AddCorsServices();
 builder.Services.AddDatabaseServices(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddMeilisearchServices();
+builder.Services.AddServices();
+builder.Services.AddRepositoryServices();
+
+builder.Services.AddMapster();
+TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
+
+await app.SeedData();
+await app.IndexProductsIfEmpty();
+
 
 if (app.Environment.IsDevelopment())
 {
